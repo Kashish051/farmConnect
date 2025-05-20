@@ -5,3 +5,72 @@ htmlCopy<!-- Find this code -->
 <a href="login.html" style="text-decoration: none; color: inherit;">
     <div class="user-icon">👤</div>
 </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AgroConnect - Registration</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div id="landing-section">
+      <h1>AgroConnect</h1>
+      <p>Connecting rural farmers directly to consumers for fresh farm & dairy products.</p>
+      <div class="role-buttons">
+        <button class="btn" onclick="showForm('farmer')">I am a Farmer</button>
+        <button class="btn" onclick="showForm('consumer')">I am a Consumer</button>
+      </div>
+    </div>
+
+    <div id="farmer-form" class="hidden">
+      <h1>Farmer Registration</h1>
+      <form onsubmit="redirectToDashboard(event, 'farmer')">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Phone Number" required>
+        <input type="text" placeholder="Village Name" required>
+        
+        <button type="submit">Register</button>
+        <button type="button" class="back-btn" onclick="goBack()">← Back</button>
+      </form>
+    </div>
+
+    <div id="consumer-form" class="hidden">
+      <h1>Consumer Registration</h1>
+      <form onsubmit="redirectToDashboard(event, 'consumer')">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Phone Number" required>
+        <input type="text" placeholder="City" required>
+        
+        <button type="submit">Register</button>
+        <button type="button" class="back-btn" onclick="goBack()">← Back</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function showForm(type) {
+      document.getElementById('landing-section').classList.add('hidden');
+      document.getElementById(type + '-form').classList.remove('hidden');
+    }
+
+    function goBack() {
+      document.getElementById('landing-section').classList.remove('hidden');
+      document.getElementById('farmer-form').classList.add('hidden');
+      document.getElementById('consumer-form').classList.add('hidden');
+    }
+
+    function redirectToDashboard(event, role) {
+      event.preventDefault();
+      if (role === 'farmer') {
+        window.location.href = 'farmer-dashboard.html';
+      } else if (role === 'consumer') {
+        window.location.href = 'consumer-dashboard.html';
+      }
+    }
+  </script>
+</body>
+</html>
